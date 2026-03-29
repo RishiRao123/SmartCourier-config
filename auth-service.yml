@@ -2,8 +2,10 @@ server:
   port: 8081
 
 spring:
+  application:
+    name: AUTH-SERVICE
   datasource:
-    url: jdbc:mysql://mysql-db:3306/auth_db
+    url: jdbc:mysql://mysql-db:3306/auth_db # Fixed for Docker!
     username: root
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -11,11 +13,20 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+  expiration: 86400000
 
 eureka:
   client:
     service-url:
-      defaultZone: http://service-registry:8761/eureka/
+      defaultZone: http://service-registry:8761/eureka/ # Fixed for Docker!
+  instance:
+    prefer-ip-address: true
 
 management:
   tracing:
@@ -24,7 +35,3 @@ management:
   zipkin:
     tracing:
       endpoint: http://zipkin-server:9411/api/v2/spans
-
-jwt:
-  secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
-  expiration: 86400000
