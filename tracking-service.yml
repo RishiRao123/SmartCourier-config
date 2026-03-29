@@ -7,18 +7,29 @@ spring:
     username: root
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
-  rabbitmq:
-    host: rabbitmq
-    port: 5672
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 5MB
+      max-request-size: 5MB
+
+
+file:
+  upload-dir: /app/tracking-uploads/
 
 eureka:
   client:
     service-url:
-      defaultZone: http://service-registry:8761/eureka/
+      defaultZone: http://service-registry:8761/eureka/ 
 
 management:
   tracing:
