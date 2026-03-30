@@ -5,11 +5,12 @@ spring:
   application:
     name: AUTH-SERVICE
   datasource:
-    url: jdbc:mysql://mysql-db:3306/auth_db # Fixed for Docker!
+    url: jdbc:mysql://mysql-db:3306/auth_db 
     username: root
     password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -24,7 +25,7 @@ jwt:
 eureka:
   client:
     service-url:
-      defaultZone: http://service-registry:8761/eureka/ # Fixed for Docker!
+      defaultZone: http://service-registry:8761/eureka/ 
   instance:
     prefer-ip-address: true
 
