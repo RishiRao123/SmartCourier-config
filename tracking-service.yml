@@ -5,9 +5,9 @@ spring:
   application:
     name: TRACKING-SERVICE
   datasource:
-    url: jdbc:mysql://mysql-db:3306/tracking_db?createDatabaseIfNotExist=true
+    url: jdbc:mysql://mysql-db:3306/tracking_db
     username: root
-    password: ${DB_PASSWORD}
+    password: Ri$hiRao123
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
