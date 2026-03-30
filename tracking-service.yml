@@ -6,12 +6,11 @@ spring:
     name: TRACKING-SERVICE
   datasource:
     url: jdbc:mysql://mysql-db:3306/tracking_db
-    username: root
+    username: ${DB_PASSWORD}
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
