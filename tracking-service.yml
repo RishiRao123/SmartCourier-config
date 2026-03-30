@@ -13,6 +13,8 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+      format-sql: true
+      dialect: org.hibernate.dialect.MySQLDialect
     show-sql: true
     properties:
       hibernate:
