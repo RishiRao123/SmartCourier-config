@@ -5,9 +5,9 @@ spring:
   application:
     name: TRACKING-SERVICE
   datasource:
-    url: jdbc:mysql://mysql-db:3306/tracking_db
-    username: ${DB_PASSWORD}
-    password: root
+    url: jdbc:mysql://mysql-db:3306/tracking_db?createDatabaseIfNotExist=true
+    username: root
+    password: ${DB_PASSWORD}
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -38,10 +38,14 @@ eureka:
   instance:
     prefer-ip-address: true
 
+# 👇 FIX 3: Added the JWT secret for security checks
+jwt:
+  secret: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+
 management:
   tracing:
     sampling:
       probability: 1.0
   zipkin:
     tracing:
-      endpoint: http://zipkin-server:9411/api/v2/spans # ✅ Docker Zipkin
+      endpoint: http://zipkin-server:9411/api/v2/spans
